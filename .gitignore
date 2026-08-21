@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+.DS_Store
+*.log
+countries.json
+data
+maxxbusinessmedia
+.env
+.env.local
+

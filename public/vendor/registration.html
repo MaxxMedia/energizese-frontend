@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vendor Portal Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+	<link type="text/css" href="/assets/css/styles.css" rel="stylesheet" media="all" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<style>
+    .card {
+        background-color: #f4f3ef;
+
+    }
+
+    .form-label {
+        color: #000000b3 !important;
+        font-weight: 500;
+    }
+
+    .form-check-description {
+        font-size: 12px;
+    }
+
+    .arabic-text {
+        text-align: right !important;
+        direction: rtl !important;
+    }
+</style>
+
+<body class="bg-light d-flex justify-content-center align-items-center ">
+
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+
+            <div class="col-md-12">
+
+                <div class="row">
+                    <div class="col-auto text-start">
+                        <a href="/" type="button" class="btn btn-info"><i class="bi bi-arrow-left me-2"></i>Back to Home</a>
+                    </div>
+                    <div class="col text-center">
+                        <h4 class="card-title text-center mb-4">Vendor Portal Registration</h4>
+                    </div>
+                </div>
+
+
+              <form action="https://energizese.com/views/save_vender_registration.php" method="post" enctype="multipart/form-data">
+                  <!--<form action="/views/test.php" method="post" enctype="multipart/form-data">-->
+
+                    <div class="card mb-3">
+                        <div class="card-body p-4">
+
+
+                            <div class="row row-cards">
+
+                                <h5 class="mb-3 fw-bold">Company Registration Info</h5>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="mb-3">
+                                            <label class="form-label">Registration Type *</label>
+                                            <select class="form-control form-select" id="registrationType" name="registrationType">
+                                                <option value="KSA">KSA</option>
+                                                <option value="Foreign">Foreign</option>
+                                                <option value="GCC">GCC</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- For Foreign/GCC -->
+                                    <div class="col-md-10 for_other d-none">
+                                        <div class="mb-3 position-relative">
+                                            <label class="form-label">International Registration Number</label>
+                                            <div class="input-group">
+                                                <input  type="text" class="form-control" id="intlRegNumber" name="intlRegNumber" placeholder="Registration Number">
+                                                <label class="btn btn-outline-primary d-none" id="intlUploadLabel">
+                                                    <i class="bi bi-upload"></i>
+                                                    <input  type="file" id="intlFile" name="intlFile" class="d-none" accept=".pdf,.docx">
+                                                </label>
+                                            </div>
+                                            <small class="form-text text-muted">For companies outside KSA.</small>
+                                            <div id="intlFileName" class="text-success small mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- For KSA -->
+                                    <div class="col-md-5 for_ksa">
+                                        <div class="mb-3 position-relative">
+                                            <label class="form-label">VAT Number</label>
+                                            <div class="input-group">
+                                                <input  type="text" class="form-control" id="vatNumber" name="vatNumber" placeholder="VAT Number">
+                                                <label class="btn btn-outline-primary d-none" id="vatUploadLabel">
+                                                    <i class="bi bi-upload"></i>
+                                                    <input  type="file" id="vatFile" name="vatFile" class="d-none" accept=".pdf,.docx">
+                                                </label>
+                                            </div>
+                                            <small class="form-text text-muted">Enter a 15-digit VAT number for KSA-based companies.</small>
+                                            <div id="vatFileName" class="text-success small mt-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 for_ksa">
+                                        <div class="mb-3 position-relative">
+                                            <label class="form-label">CR Number</label>
+                                            <div class="input-group">
+                                                <input  type="text" class="form-control" id="crNumber" name="crNumber" placeholder="CR Number">
+                                                <label class="btn btn-outline-primary d-none" id="crUploadLabel">
+                                                    <i class="bi bi-upload"></i>
+                                                    <input  type="file" id="crFile"  name="crFile" class="d-none" accept=".pdf,.docx">
+                                                </label>
+                                            </div>
+                                            <small class="form-text text-muted">Enter a Commercial Registration Number for KSA-based companies.</small>
+                                            <div id="crFileName" class="text-success small mt-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Company Name *</label>
+                                            <input  type="text" class="form-control" name="company_name" placeholder="Company Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 for_withoutksa">
+                                        <div class="mb-3">
+                                            <label class="form-label">Company Arabic Name *</label>
+                                            <input  type="text" name="company_arabic_name" class="form-control arabic-text" placeholder="اسم الشركة">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Role *</label>
+                                        <div>
+                                            <label class="form-check form-check-inline">
+                                                <input value="Supplier"  class="form-check-input" type="radio" name="radio_role">
+                                                <span class="form-check-label">Supplier</span>
+                                            </label>
+                                            <label class="form-check form-check-inline">
+                                                <input  class="form-check-input" value="Trader" type="radio" name="radio_role">
+                                                <span class="form-check-label">Trader</span>
+                                            </label>
+                                            <label class="form-check form-check-inline">
+                                                <input  class="form-check-input" value="Subcontractor" type="radio" name="radio_role">
+                                                <span class="form-check-label">Subcontractor</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Company Telephone/Mobile </label>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <select name="contry_code" class="form-control  form-select">
+                                                    <option value="0"> 0 </option>
+                                                    <option value="+966"> +966 </option>
+                                                    <option value="+963"> +963 </option>
+                                                    <option value="+33"> +33 </option>
+                                                    <option value="+20"> +20 </option>
+                                                    <option value="+92"> +92 </option>
+                                                    <option value="+91"> +91 </option>
+                                                    <option value="+63"> +63 </option>
+                                                    <option value="+249"> +249 </option>
+                                                    <option value="+252"> +252 </option>
+                                                    <option value="+251"> +251 </option>
+                                                    <option value="+961"> +961 </option>
+                                                    <option value="+880"> +880 </option>
+                                                    <option value="+291"> +291 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+967"> +967 </option>
+                                                    <option value="+30"> +30 </option>
+                                                    <option value="+962"> +962 </option>
+                                                    <option value="+90"> +90 </option>
+                                                    <option value="+94"> +94 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+66"> +66 </option>
+                                                    <option value="+212"> +212 </option>
+                                                    <option value="+86"> +86 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+376"> +376 </option>
+                                                    <option value="+244"> +244 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+672"> +672 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+297"> +297 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+590"> +590 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+975"> +975 </option>
+                                                    <option value="+387"> +387 </option>
+                                                    <option value="+246"> +246 </option>
+                                                    <option value="+673"> +673 </option>
+                                                    <option value="+226"> +226 </option>
+                                                    <option value="+257"> +257 </option>
+                                                    <option value="+237"> +237 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+236"> +236 </option>
+                                                    <option value="+56"> +56 </option>
+                                                    <option value="+61"> +61 </option>
+                                                    <option value="+61"> +61 </option>
+                                                    <option value="+682"> +682 </option>
+                                                    <option value="+599"> +599 </option>
+                                                    <option value="+500"> +500 </option>
+                                                    <option value="+298"> +298 </option>
+                                                    <option value="+689"> +689 </option>
+                                                    <option value="+241"> +241 </option>
+                                                    <option value="+220"> +220 </option>
+                                                    <option value="+995"> +995 </option>
+                                                    <option value="+350"> +350 </option>
+                                                    <option value="+44"> +44 </option>
+                                                    <option value="+299"> +299 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+592"> +592 </option>
+                                                    <option value="+509"> +509 </option>
+                                                    <option value="+852"> +852 </option>
+                                                    <option value="+354"> +354 </option>
+                                                    <option value="+44"> +44 </option>
+                                                    <option value="+44"> +44 </option>
+                                                    <option value="+7"> +7 </option>
+                                                    <option value="+686"> +686 </option>
+                                                    <option value="+996"> +996 </option>
+                                                    <option value="+371"> +371 </option>
+                                                    <option value="+266"> +266 </option>
+                                                    <option value="+423"> +423 </option>
+                                                    <option value="+352"> +352 </option>
+                                                    <option value="+853"> +853 </option>
+                                                    <option value="+389"> +389 </option>
+                                                    <option value="+960"> +960 </option>
+                                                    <option value="+356"> +356 </option>
+                                                    <option value="+692"> +692 </option>
+                                                    <option value="+222"> +222 </option>
+                                                    <option value="+262"> +262 </option>
+                                                    <option value="+691"> +691 </option>
+                                                    <option value="+373"> +373 </option>
+                                                    <option value="+377"> +377 </option>
+                                                    <option value="+382"> +382 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+95"> +95 </option>
+                                                    <option value="+674"> +674 </option>
+                                                    <option value="+687"> +687 </option>
+                                                    <option value="+64"> +64 </option>
+                                                    <option value="+683"> +683 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+680"> +680 </option>
+                                                    <option value="+507"> +507 </option>
+                                                    <option value="+675"> +675 </option>
+                                                    <option value="+595"> +595 </option>
+                                                    <option value="+64"> +64 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+262"> +262 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+590"> +590 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+685"> +685 </option>
+                                                    <option value="+378"> +378 </option>
+                                                    <option value="+381"> +381 </option>
+                                                    <option value="+248"> +248 </option>
+                                                    <option value="+677"> +677 </option>
+                                                    <option value="+211"> +211 </option>
+                                                    <option value="+290"> +290 </option>
+                                                    <option value="+47"> +47 </option>
+                                                    <option value="+268"> +268 </option>
+                                                    <option value="+886"> +886 </option>
+                                                    <option value="+992"> +992 </option>
+                                                    <option value="+670"> +670 </option>
+                                                    <option value="+228"> +228 </option>
+                                                    <option value="+690"> +690 </option>
+                                                    <option value="+676"> +676 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+688"> +688 </option>
+                                                    <option value="+598"> +598 </option>
+                                                    <option value="+998"> +998 </option>
+                                                    <option value="+678"> +678 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+681"> +681 </option>
+                                                    <option value="+212"> +212 </option>
+                                                    <option value="+240"> +240 </option>
+                                                    <option value="+227"> +227 </option>
+                                                    <option value="+245"> +245 </option>
+                                                    <option value="+375"> +375 </option>
+                                                    <option value="+971"> +971 </option>
+                                                    <option value="+973"> +973 </option>
+                                                    <option value="+968"> +968 </option>
+                                                    <option value="+974"> +974 </option>
+                                                    <option value="+965"> +965 </option>
+                                                    <option value="+216"> +216 </option>
+                                                    <option value="+213"> +213 </option>
+                                                    <option value="+269"> +269 </option>
+                                                    <option value="+253"> +253 </option>
+                                                    <option value="+964"> +964 </option>
+                                                    <option value="+970"> +970 </option>
+                                                    <option value="+218"> +218 </option>
+                                                    <option value="+994"> +994 </option>
+                                                    <option value="+93"> +93 </option>
+                                                    <option value="+355"> +355 </option>
+                                                    <option value="+62"> +62 </option>
+                                                    <option value="+98"> +98 </option>
+                                                    <option value="+993"> +993 </option>
+                                                    <option value="+235"> +235 </option>
+                                                    <option value="+255"> +255 </option>
+                                                    <option value="+221"> +221 </option>
+                                                    <option value="+224"> +224 </option>
+                                                    <option value="+223"> +223 </option>
+                                                    <option value="+60"> +60 </option>
+                                                    <option value="+234"> +234 </option>
+                                                    <option value="+65"> +65 </option>
+                                                    <option value="+84"> +84 </option>
+                                                    <option value="+357"> +357 </option>
+                                                    <option value="+855"> +855 </option>
+                                                    <option value="+856"> +856 </option>
+                                                    <option value="+976"> +976 </option>
+                                                    <option value="+977"> +977 </option>
+                                                    <option value="+81"> +81 </option>
+                                                    <option value="+256"> +256 </option>
+                                                    <option value="+229"> +229 </option>
+                                                    <option value="+267"> +267 </option>
+                                                    <option value="+27"> +27 </option>
+                                                    <option value="+250"> +250 </option>
+                                                    <option value="+260"> +260 </option>
+                                                    <option value="+263"> +263 </option>
+                                                    <option value="+239"> +239 </option>
+                                                    <option value="+232"> +232 </option>
+                                                    <option value="+233"> +233 </option>
+                                                    <option value="+254"> +254 </option>
+                                                    <option value="+231"> +231 </option>
+                                                    <option value="+265"> +265 </option>
+                                                    <option value="+261"> +261 </option>
+                                                    <option value="+230"> +230 </option>
+                                                    <option value="+258"> +258 </option>
+                                                    <option value="+264"> +264 </option>
+                                                    <option value="+54"> +54 </option>
+                                                    <option value="+593"> +593 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+55"> +55 </option>
+                                                    <option value="+591"> +591 </option>
+                                                    <option value="+51"> +51 </option>
+                                                    <option value="+501"> +501 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+502"> +502 </option>
+                                                    <option value="+1"> +1 </option>
+                                                    <option value="+503"> +503 </option>
+                                                    <option value="+597"> +597 </option>
+                                                    <option value="+58"> +58 </option>
+                                                    <option value="+53"> +53 </option>
+                                                    <option value="+506"> +506 </option>
+                                                    <option value="+57"> +57 </option>
+                                                    <option value="+52"> +52 </option>
+                                                    <option value="+505"> +505 </option>
+                                                    <option value="+504"> +504 </option>
+                                                    <option value="+353"> +353 </option>
+                                                    <option value="+374"> +374 </option>
+                                                    <option value="+34"> +34 </option>
+                                                    <option value="+372"> +372 </option>
+                                                    <option value="+49"> +49 </option>
+                                                    <option value="+380"> +380 </option>
+                                                    <option value="+39"> +39 </option>
+                                                    <option value="+351"> +351 </option>
+                                                    <option value="+44"> +44 </option>
+                                                    <option value="+32"> +32 </option>
+                                                    <option value="+359"> +359 </option>
+                                                    <option value="+48"> +48 </option>
+                                                    <option value="+420"> +420 </option>
+                                                    <option value="+45"> +45 </option>
+                                                    <option value="+7"> +7 </option>
+                                                    <option value="+40"> +40 </option>
+                                                    <option value="+421"> +421 </option>
+                                                    <option value="+386"> +386 </option>
+                                                    <option value="+46"> +46 </option>
+                                                    <option value="+41"> +41 </option>
+                                                    <option value="+358"> +358 </option>
+                                                    <option value="+385"> +385 </option>
+                                                    <option value="+370"> +370 </option>
+                                                    <option value="+47"> +47 </option>
+                                                    <option value="+43"> +43 </option>
+                                                    <option value="+36"> +36 </option>
+                                                    <option value="+31"> +31 </option>
+                                                    <option value="+61"> +61 </option>
+                                                    <option value="+679"> +679 </option>
+                                                    <option value="0"> 0 </option>
+                                                    <option value="0"> 0 </option><!---->
+                                                </select>
+                                            </div>
+                                            <div class="col-9">
+                                                <input  type="text" class="form-control" name="company_telephone_mobile_no" placeholder="Company Telephone/Mobile ">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Company Email *</label>
+                                        <input  type="email" class="form-control" name="company_email" placeholder="Company Email ">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Turn Over Last 3 Years *</label>
+                                        <select name="turn_over_last_3_years"class="form-control form-select">
+                                            <option value="Less Than 1 Million">Less Than 1 Million</option>
+                                            <option value="Between 1 Million To 10 Million">Between 1 Million To 10 Million</option>
+                                            <option value="Between 10 Million To 20 Million">Between 10 Million To 20 Million</option>
+                                            <option value="Between 20 Million To 30 Million">Between 20 Million To 30 Million</option>
+                                            <option value="Between 30 Million To 40 Million">Between 30 Million To 40 Million</option>
+                                            <option value="Between 40 Million To 50 Million">Between 40 Million To 50 Million</option>
+                                            <option value="Between 50 Million To 60 Million">Between 50 Million To 60 Million</option>
+                                            <option value="Between 60 Million To 70 Million">Between 60 Million To 70 Million</option>
+                                            <option value="Between 70 Million To 80 Million">Between 70 Million To 80 Million</option>
+                                            <option value="Between 80 Million To 90 Million">Between 80 Million To 90 Million</option>
+                                            <option value="More Than 90 Million">More Than 90 Million</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Size of Company *</label>
+                                        <select name="size_of_company" class="form-control form-select">
+                                            <option value="Small (1-10 employees)">Small (1-10 employees)</option>
+                                            <option value="Medium (11-50 employees)">Medium (11-50 employees)</option>
+                                            <option value="Large (51-200 employees)">Large (51-200 employees)</option>
+                                            <option value="Enterprise (201-500 employees)">Enterprise (201-500 employees)</option>
+                                            <option value="Enterprise (501-1000 employees)">Enterprise (501-1000 employees)</option>
+                                            <option value="Enterprise (1001-1500 employees)">Enterprise (1001-1500 employees)</option>
+                                            <option value="Enterprise (1501-2000 employees)">Enterprise (1501-2000 employees)</option>
+                                            <option value="Enterprise (2001-2500 employees)">Enterprise (2001-2500 employees)</option>
+                                            <option value="Enterprise (2501-3000 employees)">Enterprise (2501-3000 employees)</option>
+                                            <option value="Enterprise (3001-3500 employees)">Enterprise (3001-3500 employees)</option>
+                                            <option value="Enterprise (3501-4000 employees)">Enterprise (3501-4000 employees)</option>
+                                            <option value="Enterprise (4001-4500 employees)">Enterprise (4001-4500 employees)</option>
+                                            <option value="Enterprise (4501-5000 employees)">Enterprise (4501-5000 employees)</option>
+                                            <option value="Enterprise (5001-6000 employees)">Enterprise (5001-6000 employees)</option>
+                                            <option value="Enterprise (6001-7000 employees)">Enterprise (6001-7000 employees)</option>
+                                            <option value="Enterprise (7001-8000 employees)">Enterprise (7001-8000 employees)</option>
+                                            <option value="Enterprise (8001-9000 employees)">Enterprise (8001-9000 employees)</option>
+                                            <option value="Enterprise (9001-10000 employees)">Enterprise (9001-10000 employees)</option>
+                                            <option value="Enterprise (10001+ employees">Enterprise (10001+ employees)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Company Affiliated to PIF *</label>
+                                        <div>
+                                            <label class="form-check form-check-inline">
+                                                <input value="Yes"  class="form-check-input" type="radio" name="radios-inline-company-affliated">
+                                                <span class="form-check-label">Yes</span>
+                                            </label>
+                                            <label class="form-check form-check-inline">
+                                                <input value="No"  class="form-check-input" type="radio" name="radios-inline-company-affliated">
+                                                <span class="form-check-label">No</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Do you have Local Content Certificate **</label>
+                                        <div>
+                                            <label class="form-check form-check-inline">
+                                                <input  class="form-check-input" type="radio" name="radios-inline-local-content" value="Yes">
+                                                <span class="form-check-label">Yes</span>
+                                            </label>
+                                            <label class="form-check form-check-inline">
+                                                <input  class="form-check-input" type="radio" name="radios-inline-local-content" value="No">
+                                                <span class="form-check-label">No</span>
+                                            </label>
+                                        </div>
+                                        <div class="if-local-content-yes d-none mt-3">
+                                            <label class="form-label">Contribution Percentage:</label>
+                                            <input  type="number" name="contribution_percentage" class="form-control mb-2" placeholder="Eg : 54.87">
+
+                                            <label class="form-label mt-2">Upload Certificate (PDF/DOCX only):</label>
+                                            <input  type="file" name="contribution_certificate" class="form-control file-upload" accept=".pdf,.docx">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Do you Manufactured Locally *</label>
+                                        <div>
+                                            <label class="form-check form-check-inline">
+                                                <input  class="form-check-input" value="Yes" type="radio" name="radios-inline-manufactured">
+                                                <span class="form-check-label">Yes</span>
+                                            </label>
+                                            <label class="form-check form-check-inline">
+                                                <input  class="form-check-input" value="No" type="radio" name="radios-inline-manufactured">
+                                                <span class="form-check-label">No</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">CEO Name *</label>
+                                        <input  type="text" name="ceo_name" class="form-control" placeholder="CEO Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">CEO Email *</label>
+                                        <input  type="email" name="ceo_email" class="form-control" placeholder="CEO Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">CFO Name *</label>
+                                        <input  type="text" name="cfo_name" class="form-control" placeholder="CFO Name *">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">CFO Email *</label>
+                                        <input  type="email" name="cfo_email" class="form-control" placeholder="CFO Email ">
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Fax *</label>
+                                        <input  type="text" name="fax" class="form-control" placeholder="Fax Number">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Company Website *</label>
+                                        <input  type="text" name="company_website" class="form-control" placeholder="Company Website">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="mb-3">
+                                        <label class="form-label">Main Contact Email *</label>
+                                        <input  type="text" name="company_contact_email" class="form-control" placeholder="Contact Email">
+                                        <small class="form-text text-muted">Please enter a valid email to receive OTPs and account status updates.</small>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body p-4">
+                            <div class="row row-cards">
+                                <h5 class="mb-3 fw-bold">Signatory Person Details</h5>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Name *</label>
+                                            <input  type="text" name="signatory_person_name" class="form-control" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Job Title *</label>
+                                            <input  type="text" name="signatory_person_job_title" class="form-control" placeholder="Job Title">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Email *</label>
+                                            <input  type="email" name="signatory_person_email" class="form-control" placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body p-4">
+                            <div class="row row-cards">
+                                <h5 class="mb-3 fw-bold">Address Info</h5>
+                                <input type="hidden" name="addressList" id="addressListInput">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Short Address *</label>
+                                            <input  type="text" name="short_address" id="short_address" class="form-control" placeholder="Short Address">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Building Number *</label>
+                                            <input  type="text" id="buildingno" name="buildingno" class="form-control" placeholder="Building Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Street *</label>
+                                            <input  type="text" name="street" id="street" class="form-control" placeholder="Street">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">District *</label>
+                                            <input  type="text" name="district" id="district" class="form-control" placeholder="District">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Postal Code *</label>
+                                            <input  type="text" id="postalcode" name="postalcode" class="form-control" placeholder="Postal Code ">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">City *</label>
+                                            <input  type="text" name="city" id="city" class="form-control" placeholder="City">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Country *</label>
+
+                                            <select id="country" class="form-select" name="country">
+                                                <option>Select Country</option>
+                                                <option value="Afghanistan">Afghanistan</option>
+                                                <option value="Aland Islands">Aland Islands</option>
+                                                <option value="Albania">Albania</option>
+                                                <option value="Algeria">Algeria</option>
+                                                <option value="American Samoa">American Samoa</option>
+                                                <option value="Andorra">Andorra</option>
+                                                <option value="Angola">Angola</option>
+                                                <option value="Anguilla">Anguilla</option>
+                                                <option value="Antarctica">Antarctica</option>
+                                                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                                <option value="Argentina">Argentina</option>
+                                                <option value="Armenia">Armenia</option>
+                                                <option value="Aruba">Aruba</option>
+                                                <option value="Australia">Australia</option>
+                                                <option value="Austria">Austria</option>
+                                                <option value="Azerbaijan">Azerbaijan</option>
+                                                <option value="Bahamas">Bahamas</option>
+                                                <option value="Bahrain">Bahrain</option>
+                                                <option value="Bangladesh">Bangladesh</option>
+                                                <option value="Barbados">Barbados</option>
+                                                <option value="Belarus">Belarus</option>
+                                                <option value="Belgium">Belgium</option>
+                                                <option value="Belize">Belize</option>
+                                                <option value="Benin">Benin</option>
+                                                <option value="Bermuda">Bermuda</option>
+                                                <option value="Bhutan">Bhutan</option>
+                                                <option value="Bolivia">Bolivia</option>
+                                                <option value="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
+                                                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                                <option value="Botswana">Botswana</option>
+                                                <option value="Bouvet Island">Bouvet Island</option>
+                                                <option value="Brazil">Brazil</option>
+                                                <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                                <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                                <option value="Bulgaria">Bulgaria</option>
+                                                <option value="Burkina Faso">Burkina Faso</option>
+                                                <option value="Burundi">Burundi</option>
+                                                <option value="Cambodia">Cambodia</option>
+                                                <option value="Cameroon">Cameroon</option>
+                                                <option value="Canada">Canada</option>
+                                                <option value="Cape Verde">Cape Verde</option>
+                                                <option value="Cayman Islands">Cayman Islands</option>
+                                                <option value="Central African Republic">Central African Republic</option>
+                                                <option value="Chad">Chad</option>
+                                                <option value="Chile">Chile</option>
+                                                <option value="China">China</option>
+                                                <option value="Christmas Island">Christmas Island</option>
+                                                <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                                <option value="Colombia">Colombia</option>
+                                                <option value="Comoros">Comoros</option>
+                                                <option value="Congo">Congo</option>
+                                                <option value="Congo, Democratic Republic of the Congo">Congo, Democratic Republic of the Congo</option>
+                                                <option value="Cook Islands">Cook Islands</option>
+                                                <option value="Costa Rica">Costa Rica</option>
+                                                <option value="Cote D'Ivoire">Cote D'Ivoire</option>
+                                                <option value="Croatia">Croatia</option>
+                                                <option value="Cuba">Cuba</option>
+                                                <option value="Curacao">Curacao</option>
+                                                <option value="Cyprus">Cyprus</option>
+                                                <option value="Czech Republic">Czech Republic</option>
+                                                <option value="Denmark">Denmark</option>
+                                                <option value="Djibouti">Djibouti</option>
+                                                <option value="Dominica">Dominica</option>
+                                                <option value="Dominican Republic">Dominican Republic</option>
+                                                <option value="Ecuador">Ecuador</option>
+                                                <option value="Egypt">Egypt</option>
+                                                <option value="El Salvador">El Salvador</option>
+                                                <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                                <option value="Eritrea">Eritrea</option>
+                                                <option value="Estonia">Estonia</option>
+                                                <option value="Ethiopia">Ethiopia</option>
+                                                <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                                                <option value="Faroe Islands">Faroe Islands</option>
+                                                <option value="Fiji">Fiji</option>
+                                                <option value="Finland">Finland</option>
+                                                <option value="France">France</option>
+                                                <option value="French Guiana">French Guiana</option>
+                                                <option value="French Polynesia">French Polynesia</option>
+                                                <option value="French Southern Territories">French Southern Territories</option>
+                                                <option value="Gabon">Gabon</option>
+                                                <option value="Gambia">Gambia</option>
+                                                <option value="Georgia">Georgia</option>
+                                                <option value="Germany">Germany</option>
+                                                <option value="Ghana">Ghana</option>
+                                                <option value="Gibraltar">Gibraltar</option>
+                                                <option value="Greece">Greece</option>
+                                                <option value="Greenland">Greenland</option>
+                                                <option value="Grenada">Grenada</option>
+                                                <option value="Guadeloupe">Guadeloupe</option>
+                                                <option value="Guam">Guam</option>
+                                                <option value="Guatemala">Guatemala</option>
+                                                <option value="Guernsey">Guernsey</option>
+                                                <option value="Guinea">Guinea</option>
+                                                <option value="Guinea-Bissau">Guinea-Bissau</option>
+                                                <option value="Guyana">Guyana</option>
+                                                <option value="Haiti">Haiti</option>
+                                                <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+                                                <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+                                                <option value="Honduras">Honduras</option>
+                                                <option value="Hong Kong">Hong Kong</option>
+                                                <option value="Hungary">Hungary</option>
+                                                <option value="Iceland">Iceland</option>
+                                                <option value="India">India</option>
+                                                <option value="Indonesia">Indonesia</option>
+                                                <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                                                <option value="Iraq">Iraq</option>
+                                                <option value="Ireland">Ireland</option>
+                                                <option value="Isle of Man">Isle of Man</option>
+                                                <option value="Israel">Israel</option>
+                                                <option value="Italy">Italy</option>
+                                                <option value="Jamaica">Jamaica</option>
+                                                <option value="Japan">Japan</option>
+                                                <option value="Jersey">Jersey</option>
+                                                <option value="Jordan">Jordan</option>
+                                                <option value="Kazakhstan">Kazakhstan</option>
+                                                <option value="Kenya">Kenya</option>
+                                                <option value="Kiribati">Kiribati</option>
+                                                <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                                                <option value="Korea, Republic of">Korea, Republic of</option>
+                                                <option value="Kosovo">Kosovo</option>
+                                                <option value="Kuwait">Kuwait</option>
+                                                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                                <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                                                <option value="Latvia">Latvia</option>
+                                                <option value="Lebanon">Lebanon</option>
+                                                <option value="Lesotho">Lesotho</option>
+                                                <option value="Liberia">Liberia</option>
+                                                <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                                                <option value="Liechtenstein">Liechtenstein</option>
+                                                <option value="Lithuania">Lithuania</option>
+                                                <option value="Luxembourg">Luxembourg</option>
+                                                <option value="Macao">Macao</option>
+                                                <option value="Macedonia, the Former Yugoslav Republic of">Macedonia, the Former Yugoslav Republic of</option>
+                                                <option value="Madagascar">Madagascar</option>
+                                                <option value="Malawi">Malawi</option>
+                                                <option value="Malaysia">Malaysia</option>
+                                                <option value="Maldives">Maldives</option>
+                                                <option value="Mali">Mali</option>
+                                                <option value="Malta">Malta</option>
+                                                <option value="Marshall Islands">Marshall Islands</option>
+                                                <option value="Martinique">Martinique</option>
+                                                <option value="Mauritania">Mauritania</option>
+                                                <option value="Mauritius">Mauritius</option>
+                                                <option value="Mayotte">Mayotte</option>
+                                                <option value="Mexico">Mexico</option>
+                                                <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                                                <option value="Moldova, Republic of">Moldova, Republic of</option>
+                                                <option value="Monaco">Monaco</option>
+                                                <option value="Mongolia">Mongolia</option>
+                                                <option value="Montenegro">Montenegro</option>
+                                                <option value="Montserrat">Montserrat</option>
+                                                <option value="Morocco">Morocco</option>
+                                                <option value="Mozambique">Mozambique</option>
+                                                <option value="Myanmar">Myanmar</option>
+                                                <option value="Namibia">Namibia</option>
+                                                <option value="Nauru">Nauru</option>
+                                                <option value="Nepal">Nepal</option>
+                                                <option value="Netherlands">Netherlands</option>
+                                                <option value="Netherlands Antilles">Netherlands Antilles</option>
+                                                <option value="New Caledonia">New Caledonia</option>
+                                                <option value="New Zealand">New Zealand</option>
+                                                <option value="Nicaragua">Nicaragua</option>
+                                                <option value="Niger">Niger</option>
+                                                <option value="Nigeria">Nigeria</option>
+                                                <option value="Niue">Niue</option>
+                                                <option value="Norfolk Island">Norfolk Island</option>
+                                                <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                                                <option value="Norway">Norway</option>
+                                                <option value="Oman">Oman</option>
+                                                <option value="Pakistan">Pakistan</option>
+                                                <option value="Palau">Palau</option>
+                                                <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+                                                <option value="Panama">Panama</option>
+                                                <option value="Papua New Guinea">Papua New Guinea</option>
+                                                <option value="Paraguay">Paraguay</option>
+                                                <option value="Peru">Peru</option>
+                                                <option value="Philippines">Philippines</option>
+                                                <option value="Pitcairn">Pitcairn</option>
+                                                <option value="Poland">Poland</option>
+                                                <option value="Portugal">Portugal</option>
+                                                <option value="Puerto Rico">Puerto Rico</option>
+                                                <option value="Qatar">Qatar</option>
+                                                <option value="Reunion">Reunion</option>
+                                                <option value="Romania">Romania</option>
+                                                <option value="Russian Federation">Russian Federation</option>
+                                                <option value="Rwanda">Rwanda</option>
+                                                <option value="Saint Barthelemy">Saint Barthelemy</option>
+                                                <option value="Saint Helena">Saint Helena</option>
+                                                <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                                <option value="Saint Lucia">Saint Lucia</option>
+                                                <option value="Saint Martin">Saint Martin</option>
+                                                <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                                                <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                                                <option value="Samoa">Samoa</option>
+                                                <option value="San Marino">San Marino</option>
+                                                <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                                                <option value="Saudi Arabia">Saudi Arabia</option>
+                                                <option value="Senegal">Senegal</option>
+                                                <option value="Serbia">Serbia</option>
+                                                <option value="Serbia and Montenegro">Serbia and Montenegro</option>
+                                                <option value="Seychelles">Seychelles</option>
+                                                <option value="Sierra Leone">Sierra Leone</option>
+                                                <option value="Singapore">Singapore</option>
+                                                <option value="Sint Maarten">Sint Maarten</option>
+                                                <option value="Slovakia">Slovakia</option>
+                                                <option value="Slovenia">Slovenia</option>
+                                                <option value="Solomon Islands">Solomon Islands</option>
+                                                <option value="Somalia">Somalia</option>
+                                                <option value="South Africa">South Africa</option>
+                                                <option value="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
+                                                <option value="South Sudan">South Sudan</option>
+                                                <option value="Spain">Spain</option>
+                                                <option value="Sri Lanka">Sri Lanka</option>
+                                                <option value="Sudan">Sudan</option>
+                                                <option value="Suriname">Suriname</option>
+                                                <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                                                <option value="Swaziland">Swaziland</option>
+                                                <option value="Sweden">Sweden</option>
+                                                <option value="Switzerland">Switzerland</option>
+                                                <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                                                <option value="Taiwan, Province of China">Taiwan, Province of China</option>
+                                                <option value="Tajikistan">Tajikistan</option>
+                                                <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                                                <option value="Thailand">Thailand</option>
+                                                <option value="Timor-Leste">Timor-Leste</option>
+                                                <option value="Togo">Togo</option>
+                                                <option value="Tokelau">Tokelau</option>
+                                                <option value="Tonga">Tonga</option>
+                                                <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                                <option value="Tunisia">Tunisia</option>
+                                                <option value="Turkey">Turkey</option>
+                                                <option value="Turkmenistan">Turkmenistan</option>
+                                                <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                                                <option value="Tuvalu">Tuvalu</option>
+                                                <option value="Uganda">Uganda</option>
+                                                <option value="Ukraine">Ukraine</option>
+                                                <option value="United Arab Emirates">United Arab Emirates</option>
+                                                <option value="United Kingdom">United Kingdom</option>
+                                                <option value="United States">United States</option>
+                                                <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                                <option value="Uruguay">Uruguay</option>
+                                                <option value="Uzbekistan">Uzbekistan</option>
+                                                <option value="Vanuatu">Vanuatu</option>
+                                                <option value="Venezuela">Venezuela</option>
+                                                <option value="Viet Nam">Viet Nam</option>
+                                                <option value="Virgin Islands, British">Virgin Islands, British</option>
+                                                <option value="Virgin Islands, U.s.">Virgin Islands, U.s.</option>
+                                                <option value="Wallis and Futuna">Wallis and Futuna</option>
+                                                <option value="Western Sahara">Western Sahara</option>
+                                                <option value="Yemen">Yemen</option>
+                                                <option value="Zambia">Zambia</option>
+                                                <option value="Zimbabwe">Zimbabwe</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" style="color: #c2111100 !important;">.</label> <br>
+                                            <input  class="form-check-input" type="checkbox" value="yes" id="headquarters">
+                                            <label class="form-check-label" for="headquarters">Headquarters</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 text-center">
+                                        <button id="add" type="button" class="btn btn-primary">ADD ADDRESS DETAILS</button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table" id="address_details_table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Short Address</th>
+                                                    <th scope="col">Building Number</th>
+                                                    <th scope="col">Street</th>
+                                                    <th scope="col">District</th>
+                                                    <th scope="col">Postal Code</th>
+                                                    <th scope="col">City</th>
+                                                    <th scope="col">Country</th>
+                                                    <th scope="col">Headquarters</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body p-4">
+                            <div class="row row-cards">
+                                <h5 class="mb-3 fw-bold">Contact Info</h5>
+                                 <input type="hidden" name="contactList" id="contactListInput">
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Contact Name *</label>
+                                            <input  type="text" name="contact_name" id="contact_name" class="form-control" placeholder="Contact Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Mobile Number *</label>
+                                            <input  type="text" name="mobile_number" id="mobile_number" class="form-control" placeholder="Mobile Number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Job Title *</label>
+                                            <input  type="text" name="job_title" id="job_title" class="form-control" placeholder="Job Title">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Email Address *</label>
+                                            <input  type="email" name="email_contact_address" id="email_contact_address" class="form-control" placeholder="Email Address">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Office City *</label>
+                                            <input  type="text" name="office_city" id="office_city" class="form-control" placeholder="Office City">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" style="color: #c2111100 !important;">.</label> <br>
+                                            <input  class="form-check-input" type="checkbox" value="yes" id="MainContact">
+                                            <label class="form-check-label" for="MainContact">Main Contact</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 text-center">
+                                        <button id="add_contact_btn" type="button" class="btn btn-primary">ADD CONTACT DETAILS</button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table" id="contact_table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Job Title</th>
+                                                    <th scope="col">Mobile No</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Office City</th>
+                                                    <th scope="col">Main Contact</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="contact_table_body"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body p-4">
+                            <div class="row row-cards">
+                                <h5 class="mb-3 fw-bold">Bank Info</h5>
+                                <input type="hidden" name="bankData" id="bankDataInput">
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Bank *</label>
+                                            <select id="bank" class="form-control form-select">
+                                                <option value="" disabled="" selected="">Select Bank</option>
+                                                <option value="Saudi British Bank">Saudi British Bank</option>
+                                                <option value="Bank Audi">Bank Audi</option>
+                                                <option value="Banque Saudi Fransi">Banque Saudi Fransi</option>
+                                                <option value="Al Rajhi Bank">Al Rajhi Bank</option>
+                                                <option value="Arab National Bank">Arab National Bank</option>
+                                                <option value="Bank Al Jazira">Bank Al Jazira</option>
+                                                <option value="Riyad Bank">Riyad Bank</option>
+                                                <option value="Banque Indosuez">Banque Indosuez</option>
+                                                <option value="Saudi National Bank">Saudi National Bank</option>
+                                                <option value="Al Bilad Bank">Al Bilad Bank</option>
+                                                <option value="Byblos Bank">Byblos Bank</option>
+                                                <option value="Alinma Bank">Alinma Bank</option>
+                                                <option value="Saudi Investment Bank">Saudi Investment Bank</option>
+                                                <option value="BNP Paribas KSA">BNP Paribas KSA</option>
+                                                <option value="STC Bank">STC Bank</option>
+                                                <option value="Emirates NBD bank">Emirates NBD bank</option>
+                                                <option value="Alawal Bank">Alawal Bank</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Bank Name *</label>
+                                            <input  type="text" name="bank_name" disabled id="bank_name" class="form-control" placeholder="Bank Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Bank Address *</label>
+                                            <input  type="text" name="bank_address" id="bank_address" class="form-control" placeholder="Bank Address">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Bank Account Name *</label>
+                                            <input  type="text" name="bank_account_name" id="bank_account_name" class="form-control" placeholder="Bank Account Name ">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Bank Account Number *</label>
+                                            <input  type="text" name="bank_account_number" id="bank_account_number" class="form-control" placeholder="Bank Account Number">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">IBAN *</label>
+                                            <input  type="text" name="IBAN" id="IBAN" class="form-control" placeholder="IBAN">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Swift Code *</label>
+                                            <input  type="text" name="swift_code" id="swift_code" class="form-control" placeholder="Swift Code">
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Account Type of *</label>
+                                            <div class="d-flex">
+                                                <div class="form-check me-3">
+                                                    <input  class="form-check-input" type="radio" name="flexRadioDefault" id value="LC" id="AccountTypeof">
+                                                    <label class="form-check-label" for="AccountTypeof">
+                                                        LC
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input  class="form-check-input" type="radio" name="flexRadioDefault" value="Current" id="flexRadioDefault2">
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        Current
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Currency *</label>
+                                            <select id="currency" name="currency" class="form-control form-select">
+                                                <option value="Saudi Riyal">Saudi Riyal</option>
+                                                <option value="US Dollar">US Dollar</option>
+                                                <option value="Euro">Euro</option>
+                                                <option value="UAE Dirham">UAE Dirham</option>
+                                                <option value="Afghan Afghani">Afghan Afghani</option>
+                                                <option value="Albanian Lek">Albanian Lek</option>
+                                                <option value="Netherlands Antillean Guilder">Netherlands Antillean Guilder</option>
+                                                <option value="Argentine Peso">Argentine Peso</option>
+                                                <option value="Australian Dollar">Australian Dollar</option>
+                                                <option value="Aruban Florin">Aruban Florin</option>
+                                                <option value="Azerbaijani Manat">Azerbaijani Manat</option>
+                                                <option value="Bosnia-Herzegovina Convertible Mark">Bosnia-Herzegovina Convertible Mark</option>
+                                                <option value="Barbadian Dollar">Barbadian Dollar</option>
+                                                <option value="Bulgarian Lev">Bulgarian Lev</option>
+                                                <option value="Bahraini Dinar">Bahraini Dinar</option>
+                                                <option value="Bermudian Dollar">Bermudian Dollar</option>
+                                                <option value="Brunei Dollar">Brunei Dollar</option>
+                                                <option value="Brazilian Real">Brazilian Real</option>
+                                                <option value="Bahamian Dollar">Bahamian Dollar</option>
+                                                <option value="Botswanan Pula">Botswanan Pula</option>
+                                                <option value="Belarusian Ruble">Belarusian Ruble</option>
+                                                <option value="Belize Dollar">Belize Dollar</option>
+                                                <option value="Canadian Dollar">Canadian Dollar</option>
+                                                <option value="Swiss Franc">Swiss Franc</option>
+                                                <option value="Chilean Peso">Chilean Peso</option>
+                                                <option value="Chinese Yuan">Chinese Yuan</option>
+                                                <option value="Colombian Peso">Colombian Peso</option>
+                                                <option value="Costa Rican Colón">Costa Rican Colón</option>
+                                                <option value="Cuban Peso">Cuban Peso</option>
+                                                <option value="Czech Republic Koruna">Czech Republic Koruna</option>
+                                                <option value="Danish Krone">Danish Krone</option>
+                                                <option value="Dominican Peso">Dominican Peso</option>
+                                                <option value="Estonian Kroon">Estonian Kroon</option>
+                                                <option value="Egyptian Pound">Egyptian Pound</option>
+                                                <option value="Fijian Dollar">Fijian Dollar</option>
+                                                <option value="Falkland Islands Pound">Falkland Islands Pound</option>
+                                                <option value="British Pound Sterling">British Pound Sterling</option>
+                                                <option value="Guernsey Pound">Guernsey Pound</option>
+                                                <option value="Ghanaian Cedi">Ghanaian Cedi</option>
+                                                <option value="Gibraltar Pound">Gibraltar Pound</option>
+                                                <option value="Guatemalan Quetzal">Guatemalan Quetzal</option>
+                                                <option value="Guyanaese Dollar">Guyanaese Dollar</option>
+                                                <option value="Hong Kong Dollar">Hong Kong Dollar</option>
+                                                <option value="Honduran Lempira">Honduran Lempira</option>
+                                                <option value="Croatian Kuna">Croatian Kuna</option>
+                                                <option value="Hungarian Forint">Hungarian Forint</option>
+                                                <option value="Indonesian Rupiah">Indonesian Rupiah</option>
+                                                <option value="Isle of Man Pound">Isle of Man Pound</option>
+                                                <option value="Indian Rupee">Indian Rupee</option>
+                                                <option value="Iranian Rial">Iranian Rial</option>
+                                                <option value="Icelandic Króna">Icelandic Króna</option>
+                                                <option value="Jersey Pound">Jersey Pound</option>
+                                                <option value="Jamaican Dollar">Jamaican Dollar</option>
+                                                <option value="Japanese Yen">Japanese Yen</option>
+                                                <option value="Kyrgystani Som">Kyrgystani Som</option>
+                                                <option value="Cambodian Riel">Cambodian Riel</option>
+                                                <option value="North Korean Won">North Korean Won</option>
+                                                <option value="South Korean Won">South Korean Won</option>
+                                                <option value="Cayman Islands Dollar">Cayman Islands Dollar</option>
+                                                <option value="Kazakhstani Tenge">Kazakhstani Tenge</option>
+                                                <option value="Laotian Kip">Laotian Kip</option>
+                                                <option value="Lebanese Pound">Lebanese Pound</option>
+                                                <option value="Sri Lankan Rupee">Sri Lankan Rupee</option>
+                                                <option value="Liberian Dollar">Liberian Dollar</option>
+                                                <option value="Lithuanian Litas">Lithuanian Litas</option>
+                                                <option value="Latvian Lats">Latvian Lats</option>
+                                                <option value="Macedonian Denar">Macedonian Denar</option>
+                                                <option value="Mongolian Tugrik">Mongolian Tugrik</option>
+                                                <option value="Mauritian Rupee">Mauritian Rupee</option>
+                                                <option value="Mexican Peso">Mexican Peso</option>
+                                                <option value="Malaysian Ringgit">Malaysian Ringgit</option>
+                                                <option value="Mozambican Metical">Mozambican Metical</option>
+                                                <option value="Namibian Dollar">Namibian Dollar</option>
+                                                <option value="Nigerian Naira">Nigerian Naira</option>
+                                                <option value="Nicaraguan Córdoba">Nicaraguan Córdoba</option>
+                                                <option value="Norwegian Krone">Norwegian Krone</option>
+                                                <option value="Nepalese Rupee">Nepalese Rupee</option>
+                                                <option value="New Zealand Dollar">New Zealand Dollar</option>
+                                                <option value="Omani Rial">Omani Rial</option>
+                                                <option value="Peruvian Nuevo Sol">Peruvian Nuevo Sol</option>
+                                                <option value="Philippine Peso">Philippine Peso</option>
+                                                <option value="Pakistani Rupee">Pakistani Rupee</option>
+                                                <option value="Polish Zloty">Polish Zloty</option>
+                                                <option value="Paraguayan Guarani">Paraguayan Guarani</option>
+                                                <option value="Qatari Rial">Qatari Rial</option>
+                                                <option value="Romanian Leu">Romanian Leu</option>
+                                                <option value="Serbian Dinar">Serbian Dinar</option>
+                                                <option value="Solomon Islands Dollar">Solomon Islands Dollar</option>
+                                                <option value="Seychellois Rupee">Seychellois Rupee</option>
+                                                <option value="Swedish Krona">Swedish Krona</option>
+                                                <option value="Singapore Dollar">Singapore Dollar</option>
+                                                <option value="Saint Helena Pound">Saint Helena Pound</option>
+                                                <option value="Somali Shilling">Somali Shilling</option>
+                                                <option value="Surinamese Dollar">Surinamese Dollar</option>
+                                                <option value="Salvadoran Colón">Salvadoran Colón</option>
+                                                <option value="Syrian Pound">Syrian Pound</option>
+                                                <option value="Turkish Lira">Turkish Lira</option>
+                                                <option value="Trinidad and Tobago Dollar">Trinidad and Tobago Dollar</option>
+                                                <option value="Tuvaluan Dollar">Tuvaluan Dollar</option>
+                                                <option value="New Taiwan Dollar">New Taiwan Dollar</option>
+                                                <option value="Ukrainian Hryvnia">Ukrainian Hryvnia</option>
+                                                <option value="Uruguayan Peso">Uruguayan Peso</option>
+                                                <option value="Uzbekistani Som">Uzbekistani Som</option>
+                                                <option value="Venezuelan Bolívar">Venezuelan Bolívar</option>
+                                                <option value="Vietnamese Dong">Vietnamese Dong</option>
+                                                <option value="East Caribbean Dollar">East Caribbean Dollar</option>
+                                                <option value="Yemeni Rial">Yemeni Rial</option>
+                                                <option value="South African Rand">South African Rand</option>
+                                                <option value="Zimbabwean Dollar">Zimbabwean Dollar</option>
+                                                <option value="Tunisian Dinar">Tunisian Dinar</option>
+                                                <option value="Gold (ounce)">Gold (ounce)</option>
+                                                <option value="Jordanian Dinar">Jordanian Dinar</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label">Country *</label>
+                                            <select name="bank_detail_country" id="bank_detail_country" class="form-control form-select">
+                                                <option value="Saudi Arabia">Saudi Arabia</option>
+                                                <option value="Syria">Syria</option>
+                                                <option value="France">France</option>
+                                                <option value="Egypt">Egypt</option>
+                                                <option value="Pakistan">Pakistan</option>
+                                                <option value="India">India</option>
+                                                <option value="Philippines">Philippines</option>
+                                                <option value="Sudan">Sudan</option>
+                                                <option value="Somalia">Somalia</option>
+                                                <option value="Ethiopia">Ethiopia</option>
+                                                <option value="Lebanon">Lebanon</option>
+                                                <option value="Bangladesh">Bangladesh</option>
+                                                <option value="Eritrea">Eritrea</option>
+                                                <option value="Canada">Canada</option>
+                                                <option value="Yemen">Yemen</option>
+                                                <option value="Greece">Greece</option>
+                                                <option value="Jordan">Jordan</option>
+                                                <option value="Turkey">Turkey</option>
+                                                <option value="Sri Lanka">Sri Lanka</option>
+                                                <option value="United States">United States</option>
+                                                <option value="Thailand">Thailand</option>
+                                                <option value="Morocco">Morocco</option>
+                                                <option value="China">China</option>
+                                                <option value="American Samoa">American Samoa</option>
+                                                <option value="Andorra">Andorra</option>
+                                                <option value="Angola">Angola</option>
+                                                <option value="Anguilla">Anguilla</option>
+                                                <option value="Antarctica">Antarctica</option>
+                                                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                                <option value="Aruba">Aruba</option>
+                                                <option value="Bahamas">Bahamas</option>
+                                                <option value="Saint Barthelemy">Saint Barthelemy</option>
+                                                <option value="Bermuda">Bermuda</option>
+                                                <option value="Bhutan">Bhutan</option>
+                                                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                                <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                                <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                                <option value="Burkina Faso">Burkina Faso</option>
+                                                <option value="Burundi">Burundi</option>
+                                                <option value="Cameroon">Cameroon</option>
+                                                <option value="Cayman Islands">Cayman Islands</option>
+                                                <option value="Central African Republic">Central African Republic</option>
+                                                <option value="Chile">Chile</option>
+                                                <option value="Christmas Island">Christmas Island</option>
+                                                <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                                <option value="Cook Islands">Cook Islands</option>
+                                                <option value="Curaçao">Curaçao</option>
+                                                <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                                                <option value="Faroe Islands">Faroe Islands</option>
+                                                <option value="French Polynesia">French Polynesia</option>
+                                                <option value="Gabon">Gabon</option>
+                                                <option value="Gambia">Gambia</option>
+                                                <option value="Georgia">Georgia</option>
+                                                <option value="Gibraltar">Gibraltar</option>
+                                                <option value="Guernsey">Guernsey</option>
+                                                <option value="Greenland">Greenland</option>
+                                                <option value="Grenada">Grenada</option>
+                                                <option value="Guam">Guam</option>
+                                                <option value="Guyana">Guyana</option>
+                                                <option value="Haiti">Haiti</option>
+                                                <option value="Hong Kong">Hong Kong</option>
+                                                <option value="Iceland">Iceland</option>
+                                                <option value="Isle of Man">Isle of Man</option>
+                                                <option value="Jersey">Jersey</option>
+                                                <option value="Kazakhstan">Kazakhstan</option>
+                                                <option value="Kiribati">Kiribati</option>
+                                                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                                <option value="Latvia">Latvia</option>
+                                                <option value="Lesotho">Lesotho</option>
+                                                <option value="Liechtenstein">Liechtenstein</option>
+                                                <option value="Luxembourg">Luxembourg</option>
+                                                <option value="Macau">Macau</option>
+                                                <option value="Macedonia">Macedonia</option>
+                                                <option value="Maldives">Maldives</option>
+                                                <option value="Malta">Malta</option>
+                                                <option value="Marshall Islands">Marshall Islands</option>
+                                                <option value="Mauritania">Mauritania</option>
+                                                <option value="Mayotte">Mayotte</option>
+                                                <option value="Micronesia">Micronesia</option>
+                                                <option value="Moldova">Moldova</option>
+                                                <option value="Monaco">Monaco</option>
+                                                <option value="Montenegro">Montenegro</option>
+                                                <option value="Myanmar">Myanmar</option>
+                                                <option value="New Zealand">New Zealand</option>
+                                                <option value="United Arab Emirates">United Arab Emirates</option>
+                                                <option value="Bahrain">Bahrain</option>
+                                                <option value="Oman">Oman</option>
+                                                <option value="Qatar">Qatar</option>
+                                                <option value="Kuwait">Kuwait</option>
+                                                <option value="Tunisia">Tunisia</option>
+                                                <option value="Algeria">Algeria</option>
+                                                <option value="Comoros">Comoros</option>
+                                                <option value="Djibouti">Djibouti</option>
+                                                <option value="Iraq">Iraq</option>
+                                                <option value="Palestine">Palestine</option>
+                                                <option value="Libya">Libya</option>
+                                                <option value="Azerbaijan">Azerbaijan</option>
+                                                <option value="Afghanistan">Afghanistan</option>
+                                                <option value="Albania">Albania</option>
+                                                <option value="Indonesia">Indonesia</option>
+                                                <option value="Iran">Iran</option>
+                                                <option value="Turkmenistan">Turkmenistan</option>
+                                                <option value="Tanzania">Tanzania</option>
+                                                <option value="Senegal">Senegal</option>
+                                                <option value="Mali">Mali</option>
+                                                <option value="Malaysia">Malaysia</option>
+                                                <option value="Nigeria">Nigeria</option>
+                                                <option value="Singapore">Singapore</option>
+                                                <option value="Vietnam">Vietnam</option>
+                                                <option value="Cambodia">Cambodia</option>
+                                                <option value="Japan">Japan</option>
+                                                <option value="Uganda">Uganda</option>
+                                                <option value="South Africa">South Africa</option>
+                                                <option value="Kenya">Kenya</option>
+                                                <option value="Ghana">Ghana</option>
+                                                <option value="Argentina">Argentina</option>
+                                                <option value="Brazil">Brazil</option>
+                                                <option value="Mexico">Mexico</option>
+                                                <option value="Ireland">Ireland</option>
+                                                <option value="Spain">Spain</option>
+                                                <option value="Germany">Germany</option>
+                                                <option value="United Kingdom">United Kingdom</option>
+                                                <option value="Italy">Italy</option>
+                                                <option value="Portugal">Portugal</option>
+                                                <option value="Sweden">Sweden</option>
+                                                <option value="Switzerland">Switzerland</option>
+                                                <option value="Netherlands">Netherlands</option>
+                                                <option value="Australia">Australia</option>
+                                                <option value="Fiji">Fiji</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 text-center">
+                                        <button id="add_bank_details_btn" type="button" class="btn btn-primary">ADD BANK DETAILS</button>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table" id="bank_details_table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Bank Name</th>
+                                                    <th scope="col">Bank Address</th>
+                                                    <th scope="col">Account Name</th>
+                                                    <th scope="col">Account Number</th>
+                                                    <th scope="col">IBAN</th>
+                                                    <th scope="col">Swift Code</th>
+                                                    <th scope="col">Account Type of</th>
+                                                    <th scope="col">Currency</th>
+                                                    <th scope="col">Country</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="bank_details_table_body"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body p-4">
+                            <div class="row row-cards">
+                                <h5 class="mb-3 fw-bold">Document Info</h5>
+                                <input type="hidden" name="documentsList" id="documentsListInput">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Document Type *</label>
+                                            <select name="document_type" id="document_type" class="form-control form-select">
+                                                <option value="Commercial Registration">Commercial Registration *</option>
+                                                <option value="VAT Certificate">VAT Certificate *</option>
+                                                <option value="Vendors - Letter of Disclosure of interest-conflict">Vendors - Letter of Disclosure of interest-conflict *</option>
+                                                <option value="Proof of National Address">Proof of National Address *</option>
+                                                <option value="GOSI Certificate">GOSI Certificate</option>
+                                                <option value="Zakat Certificate">Zakat Certificate</option>
+                                                <option value="Saudization">Saudization</option>
+                                                <option value="Chamber of Commerce">Chamber of Commerce</option>
+                                                <option value="Financial Statements">Financial Statements</option>
+                                                <option value="Zakat Momez">Zakat Momez</option>
+                                                <option value="Company Organization Chart">Company Organization Chart</option>
+                                                <option value="Company Profile">Company Profile</option>
+                                                <option value="IBAN">IBAN</option>
+                                                <option value="ISO Certificate">ISO Certificate</option>
+                                                <option value="Manufactured Locally">Manufactured Locally</option>
+                                                <option value="Concrete Certificate">Concrete Certificate</option>
+                                                <option value="Metals Certificate">Metals Certificate</option>
+                                                <option value="Local Content Certificate">Local Content Certificate</option>
+                                                <option value="Masonry Certificate">Masonry Certificate</option>
+                                                <option value="Wood, Plastics, And Composites Certificate">Wood, Plastics, And Composites Certificate</option>
+                                                <option value="Openings Certificate">Openings Certificate</option>
+                                                <option value="Equipment Certificate">Equipment Certificate</option>
+                                                <option value="Furnishings Certificate">Furnishings Certificate</option>
+                                                <option value="Heating, Ventilating, And Air Conditioning (HVAC)">Heating, Ventilating, And Air Conditioning (HVAC)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Expiry Date</label>
+                                            <input  type="date" name="expiry_date" id="expiry_date" class="form-control" placeholder="Expiry Date">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Document Identification *</label>
+                                            <input  type="text" name="document_dentification" id="document_dentification" class="form-control" placeholder="Document Identification *">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="Upload_a_PDF" class="form-label">Upload a PDF (max 2MB)</label>
+                                            <input  type="file" name="Upload_a_PDF" id="Upload_a_PDF" class="form-control" accept="application/pdf">
+                                        </div>
+                                        <script>
+                                            document.getElementById('Upload_a_PDF').addEventListener('change', function() {
+                                                const file = this.files[0];
+                                                if (file) {
+                                                    if (file.size > 2 * 1024 * 1024) {
+                                                        alert('File size must be less than 2MB.');
+                                                        this.value = '';
+                                                    }
+                                                }
+                                            });
+                                        </script>
+
+                                    </div>
+
+                                    <div class="col-md-12 text-center">
+                                        <button id="add_documents_btn" type="button" class="btn btn-primary">ADD DOCUMENT DETAILS</button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table" id="documents_details_table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Doc Name</th>
+                                                    <th scope="col">Expiry Date</th>
+                                                    <th scope="col">Document Identity</th>
+                                                    <th scope="col">File Attached</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="documents_details_table_body"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-12 text-end">
+                                    <button type="submit" class="btn btn-outline-success">COMPLETE REISTRATION <i class="ms-2 bi bi-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Address detail manage script -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const addBtn = document.getElementById("add");
+            const tableBody = document.querySelector("#address_details_table tbody");
+
+            let editIndex = null;
+
+            // Load saved data from sessionStorage
+            let addressList = JSON.parse(sessionStorage.getItem("addressList")) || [];
+            renderTable();
+
+            // Add / Update record
+            addBtn.addEventListener("click", () => {
+                const shortAddress = document.getElementById("short_address").value.trim();
+                const buildingNo = document.getElementById("buildingno").value.trim();
+                const street = document.getElementById("street").value.trim();
+                const district = document.getElementById("district").value.trim();
+                const postalCode = document.getElementById("postalcode").value.trim();
+                const city = document.getElementById("city").value.trim();
+                const country = document.getElementById("country").value;
+                const headquarters = document.getElementById("headquarters").checked ? "Yes" : "No";
+
+                if (!shortAddress || !buildingNo || !street || !district || !postalCode || !city || country === "Select Country") {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Missing Fields",
+                        text: "Please fill all required fields before saving.",
+                        confirmButtonColor: "#3085d6"
+                    });
+                    return;
+                }
+
+                const newEntry = {
+                    shortAddress,
+                    buildingNo,
+                    street,
+                    district,
+                    postalCode,
+                    city,
+                    country,
+                    headquarters
+                };
+
+                // Ensure only one HQ at a time
+                if (headquarters === "Yes") {
+                    addressList = addressList.map(item => ({
+                        ...item,
+                        headquarters: "No"
+                    }));
+                }
+
+                if (editIndex !== null) {
+                    addressList[editIndex] = newEntry;
+                    editIndex = null;
+                    addBtn.textContent = "ADD ADDRESS DETAILS";
+                    Swal.fire({
+                        icon: "success",
+                        title: "Updated Successfully",
+                        text: "Address details have been updated.",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                } else {
+                    addressList.push(newEntry);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Saved Successfully",
+                        text: "New address details have been added.",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+
+                saveAndRender();
+                clearInputs();
+            });
+
+            // Handle edit & delete
+            tableBody.addEventListener("click", (e) => {
+                const row = e.target.closest("tr");
+                const index = row.dataset.index;
+
+                if (e.target.classList.contains("bi-trash")) {
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "This record will be permanently deleted.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            addressList.splice(index, 1);
+                            saveAndRender();
+                            Swal.fire({
+                                icon: "success",
+                                title: "Deleted!",
+                                text: "Address record has been deleted.",
+                                timer: 1500,
+                                showConfirmButton: false
+                            });
+                        }
+                    });
+                }
+
+                if (e.target.classList.contains("bi-pencil-square")) {
+                    const data = addressList[index];
+                    document.getElementById("short_address").value = data.shortAddress;
+                    document.getElementById("buildingno").value = data.buildingNo;
+                    document.getElementById("street").value = data.street;
+                    document.getElementById("district").value = data.district;
+                    document.getElementById("postalcode").value = data.postalCode;
+                    document.getElementById("city").value = data.city;
+                    document.getElementById("country").value = data.country;
+                    document.getElementById("headquarters").checked = (data.headquarters === "Yes");
+                    editIndex = parseInt(index);
+                    addBtn.textContent = "UPDATE ADDRESS DETAILS";
+
+                    Swal.fire({
+                        icon: "info",
+                        title: "Edit Mode",
+                        text: "You can now update the selected address details.",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+            });
+
+            function renderTable() {
+                tableBody.innerHTML = "";
+                addressList.forEach((item, index) => {
+                    const row = document.createElement("tr");
+                    row.dataset.index = index;
+                    row.innerHTML = `
+                <td>${item.shortAddress}</td>
+                <td>${item.buildingNo}</td>
+                <td>${item.street}</td>
+                <td>${item.district}</td>
+                <td>${item.postalCode}</td>
+                <td>${item.city}</td>
+                <td>${item.country}</td>
+                <td>${item.headquarters}</td>
+                <td>
+                    <i class="bi bi-pencil-square text-warning me-2" style="cursor:pointer;"></i>
+                    <i class="bi bi-trash text-danger" style="cursor:pointer;"></i>
+                </td>
+            `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            function clearInputs() {
+                document.querySelectorAll("#short_address, #buildingno, #street, #district, #postalcode, #city").forEach(input => input.value = "");
+                document.getElementById("country").value = "Select Country";
+                document.getElementById("headquarters").checked = false;
+            }
+
+            function saveAndRender() {
+                sessionStorage.setItem("addressList", JSON.stringify(addressList));
+                renderTable();
+            }
+        });
+    </script>
+
+
+    <!-- Contact details script -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const addContactBtn = document.getElementById("add_contact_btn");
+            const contactTableBody = document.querySelector("#contact_table_body");
+
+            let contactList = JSON.parse(sessionStorage.getItem("contactList")) || [];
+            let contactEditIndex = null;
+
+            renderContactTable();
+
+            // Add or Update Contact
+            addContactBtn.addEventListener("click", () => {
+                const name = document.getElementById("contact_name").value.trim();
+                const mobile = document.getElementById("mobile_number").value.trim();
+                const jobTitle = document.getElementById("job_title").value.trim();
+                const email = document.getElementById("email_contact_address").value.trim();
+                const officeCity = document.getElementById("office_city").value.trim();
+                const mainContact = document.getElementById("MainContact").checked ? "Yes" : "No";
+
+                if (!name || !mobile || !jobTitle || !email || !officeCity) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Missing Fields",
+                        text: "Please fill all required fields before saving.",
+                        confirmButtonColor: "#3085d6"
+                    });
+                    return;
+                }
+
+                const newContact = {
+                    name,
+                    mobile,
+                    jobTitle,
+                    email,
+                    officeCity,
+                    mainContact
+                };
+
+                // Allow only one main contact
+                if (mainContact === "Yes") {
+                    contactList = contactList.map(c => ({
+                        ...c,
+                        mainContact: "No"
+                    }));
+                }
+
+                if (contactEditIndex !== null) {
+                    contactList[contactEditIndex] = newContact;
+                    contactEditIndex = null;
+                    addContactBtn.textContent = "ADD CONTACT DETAILS";
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "Updated Successfully",
+                        text: "Contact details have been updated.",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                } else {
+                    contactList.push(newContact);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Saved Successfully",
+                        text: "New contact details have been added.",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+
+                saveAndRenderContacts();
+                clearContactInputs();
+            });
+
+            // Handle Edit/Delete actions
+            contactTableBody.addEventListener("click", (e) => {
+                const row = e.target.closest("tr");
+                if (!row) return;
+                const index = row.dataset.index;
+
+                // Delete contact with confirmation
+                if (e.target.classList.contains("bi-trash")) {
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "This contact will be permanently deleted.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            contactList.splice(index, 1);
+                            saveAndRenderContacts();
+                            Swal.fire({
+                                icon: "success",
+                                title: "Deleted!",
+                                text: "Contact record has been deleted.",
+                                timer: 1500,
+                                showConfirmButton: false
+                            });
+                        }
+                    });
+                }
+
+                // Edit contact
+                if (e.target.classList.contains("bi-pencil-square")) {
+                    const c = contactList[index];
+                    document.getElementById("contact_name").value = c.name;
+                    document.getElementById("mobile_number").value = c.mobile;
+                    document.getElementById("job_title").value = c.jobTitle;
+                    document.getElementById("email_contact_address").value = c.email;
+                    document.getElementById("office_city").value = c.officeCity;
+                    document.getElementById("MainContact").checked = (c.mainContact === "Yes");
+                    contactEditIndex = parseInt(index);
+                    addContactBtn.textContent = "UPDATE CONTACT DETAILS";
+
+                    Swal.fire({
+                        icon: "info",
+                        title: "Edit Mode",
+                        text: "You can now update the selected contact details.",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+            });
+
+            // Render contact table
+            function renderContactTable() {
+                contactTableBody.innerHTML = "";
+                contactList.forEach((c, index) => {
+                    const row = document.createElement("tr");
+                    row.dataset.index = index;
+                    row.innerHTML = `
+                <td>${c.name}</td>
+                <td>${c.jobTitle}</td>
+                <td>${c.mobile}</td>
+                <td>${c.email}</td>
+                <td>${c.officeCity}</td>
+                <td>${c.mainContact}</td>
+                <td>
+                    <i class="bi bi-pencil-square text-warning me-2" style="cursor:pointer;"></i>
+                    <i class="bi bi-trash text-danger" style="cursor:pointer;"></i>
+                </td>
+            `;
+                    contactTableBody.appendChild(row);
+                });
+            }
+
+            function clearContactInputs() {
+                document.querySelectorAll("#contact_name, #mobile_number, #job_title, #email_contact_address, #office_city").forEach(input => input.value = "");
+                document.getElementById("MainContact").checked = false;
+            }
+
+            function saveAndRenderContacts() {
+                sessionStorage.setItem("contactList", JSON.stringify(contactList));
+                renderContactTable();
+            }
+        });
+    </script>
+
+
+    <!-- Bank detsil script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bankForm = {
+                bank: document.getElementById('bank'),
+                bank_name: document.getElementById('bank_name'),
+                bank_address: document.getElementById('bank_address'),
+                bank_account_name: document.getElementById('bank_account_name'),
+                bank_account_number: document.getElementById('bank_account_number'),
+                IBAN: document.getElementById('IBAN'),
+                swift_code: document.getElementById('swift_code'),
+                account_type: document.getElementsByName('flexRadioDefault'),
+                currency: document.getElementById('currency'),
+                country: document.getElementById('bank_detail_country')
+            };
+
+            const addBankBtn = document.getElementById('add_bank_details_btn');
+            const bankTableBody = document.getElementById('bank_details_table_body');
+            let bankData = JSON.parse(localStorage.getItem('bankData')) || [];
+            let editIndex = -1;
+
+            // Auto-fill bank name from dropdown
+            bankForm.bank.addEventListener('change', function() {
+                bankForm.bank_name.value = this.value;
+            });
+
+            // Render Table
+            function renderBankTable() {
+                bankTableBody.innerHTML = '';
+                bankData.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                <td>${item.bank_name}</td>
+                <td>${item.bank_address}</td>
+                <td>${item.bank_account_name}</td>
+                <td>${item.bank_account_number}</td>
+                <td>${item.IBAN}</td>
+                <td>${item.swift_code}</td>
+                <td>${item.account_type}</td>
+                <td>${item.currency}</td>
+                <td>${item.country}</td>
+                <td>
+                    <i class="bi bi-pencil-square text-warning me-2 editBankBtn" data-index="${index}" style="cursor:pointer;"></i>
+                    <i class="bi bi-trash text-danger deleteBankBtn" data-index="${index}" style="cursor:pointer;"></i>
+                </td>
+            `;
+                    bankTableBody.appendChild(row);
+                });
+
+                document.querySelectorAll('.editBankBtn').forEach(btn => btn.addEventListener('click', handleEditBank));
+                document.querySelectorAll('.deleteBankBtn').forEach(btn => btn.addEventListener('click', handleDeleteBank));
+            }
+
+            // Add / Update Bank
+            addBankBtn.addEventListener('click', function() {
+                const accountType = Array.from(bankForm.account_type).find(r => r.checked)?.value || '';
+
+                const newBank = {
+                    bank_name: bankForm.bank_name.value.trim(),
+                    bank_address: bankForm.bank_address.value.trim(),
+                    bank_account_name: bankForm.bank_account_name.value.trim(),
+                    bank_account_number: bankForm.bank_account_number.value.trim(),
+                    IBAN: bankForm.IBAN.value.trim(),
+                    swift_code: bankForm.swift_code.value.trim(),
+                    account_type: accountType,
+                    currency: bankForm.currency.value,
+                    country: bankForm.country.value
+                };
+
+                // Validation
+                if (!newBank.bank_name || !newBank.bank_address || !newBank.bank_account_name || !newBank.bank_account_number) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Missing Information",
+                        text: "Please fill all required fields before saving.",
+                        confirmButtonColor: "#3085d6"
+                    });
+                    return;
+                }
+
+                if (editIndex === -1) {
+                    bankData.push(newBank);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Bank Added",
+                        text: "Bank details saved successfully!",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                } else {
+                    bankData[editIndex] = newBank;
+                    editIndex = -1;
+                    addBankBtn.textContent = "ADD BANK DETAILS";
+                    Swal.fire({
+                        icon: "success",
+                        title: "Updated Successfully",
+                        text: "Bank details have been updated.",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                }
+
+                localStorage.setItem('bankData', JSON.stringify(bankData));
+                renderBankTable();
+                clearBankForm();
+            });
+
+            // Edit Bank
+            function handleEditBank(e) {
+                const index = e.target.getAttribute('data-index');
+                const item = bankData[index];
+
+                bankForm.bank_name.value = item.bank_name;
+                bankForm.bank_address.value = item.bank_address;
+                bankForm.bank_account_name.value = item.bank_account_name;
+                bankForm.bank_account_number.value = item.bank_account_number;
+                bankForm.IBAN.value = item.IBAN;
+                bankForm.swift_code.value = item.swift_code;
+                bankForm.currency.value = item.currency;
+                bankForm.country.value = item.country;
+
+                Array.from(bankForm.account_type).forEach(r => r.checked = (r.value === item.account_type));
+
+                editIndex = index;
+                addBankBtn.textContent = "UPDATE BANK DETAILS";
+
+                Swal.fire({
+                    icon: "info",
+                    title: "Edit Mode",
+                    text: "You can now update the selected bank details.",
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            }
+
+            // Delete Bank
+            function handleDeleteBank(e) {
+                const index = e.target.getAttribute('data-index');
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "This bank detail will be permanently deleted.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        bankData.splice(index, 1);
+                        localStorage.setItem('bankData', JSON.stringify(bankData));
+                        renderBankTable();
+                        Swal.fire({
+                            icon: "success",
+                            title: "Deleted!",
+                            text: "Bank record has been removed.",
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
+                    }
+                });
+            }
+
+            // Clear Form
+            function clearBankForm() {
+                Object.values(bankForm).forEach(input => {
+                    if (input.tagName === 'INPUT' || input.tagName === 'SELECT') input.value = '';
+                });
+                Array.from(bankForm.account_type).forEach(r => r.checked = false);
+            }
+
+            renderBankTable();
+        });
+    </script>
+
+
+
+
+
+    <!-- Document Manage script code -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const documentForm = {
+                type: document.getElementById('document_type'),
+                expiry: document.getElementById('expiry_date'),
+                identification: document.getElementById('document_dentification'),
+                file: document.getElementById('Upload_a_PDF')
+            };
+
+            const addDocBtn = document.getElementById('add_documents_btn');
+            const docTableBody = document.getElementById('documents_details_table_body');
+            let documents = JSON.parse(localStorage.getItem('documentsList')) || [];
+            let editIndex = -1;
+
+            // PDF file validation
+            documentForm.file.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file && file.size > 2 * 1024 * 1024) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'File Too Large',
+                        text: 'File size must be less than 2MB.',
+                    });
+                    this.value = '';
+                }
+            });
+
+            // Render document table
+            function renderDocumentsTable() {
+                docTableBody.innerHTML = '';
+                documents.forEach((doc, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                <td>${doc.type}</td>
+                <td>${doc.expiry || '-'}</td>
+                <td>${doc.identification || '-'}</td>
+                <td>${doc.fileName 
+                    ? `<a href="${doc.fileURL}" target="_blank">${doc.fileName}</a>` 
+                    : 'No File'}
+                </td>
+                <td>
+                    <i class="bi bi-pencil-square text-warning me-2" style="cursor:pointer;" data-index="${index}"></i>
+                    <i class="bi bi-trash text-danger" style="cursor:pointer;" data-index="${index}"></i>
+                </td>
+            `;
+                    docTableBody.appendChild(row);
+                });
+            }
+
+            // Add or Update document
+            addDocBtn.addEventListener('click', function() {
+                const docType = documentForm.type.value.trim();
+                const expiryDate = documentForm.expiry.value.trim();
+                const identification = documentForm.identification.value.trim();
+                const fileInput = documentForm.file.files[0];
+
+                if (!docType || !identification) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Missing Information',
+                        text: 'Please fill all required fields.'
+                    });
+                    return;
+                }
+
+                let fileName = '';
+                let fileURL = '';
+
+                if (fileInput) {
+                    fileName = fileInput.name;
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        fileURL = e.target.result;
+                        saveDocument(docType, expiryDate, identification, fileName, fileURL);
+                    };
+                    reader.readAsDataURL(fileInput);
+                } else {
+                    saveDocument(docType, expiryDate, identification, fileName, fileURL);
+                }
+            });
+
+            function saveDocument(docType, expiryDate, identification, fileName, fileURL) {
+                const newDoc = {
+                    type: docType,
+                    expiry: expiryDate,
+                    identification: identification,
+                    fileName: fileName,
+                    fileURL: fileURL
+                };
+
+                if (editIndex === -1) {
+                    documents.push(newDoc);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Added Successfully!',
+                        text: 'Document has been added.'
+                    });
+                } else {
+                    documents[editIndex] = newDoc;
+                    editIndex = -1;
+                    addDocBtn.textContent = "ADD DOCUMENT DETAILS";
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Updated Successfully!',
+                        text: 'Document details updated.'
+                    });
+                }
+
+                localStorage.setItem('documentsList', JSON.stringify(documents));
+                renderDocumentsTable();
+                clearDocumentInputs();
+            }
+
+            // Edit or Delete
+            docTableBody.addEventListener('click', function(e) {
+                const index = e.target.dataset.index;
+                if (index === undefined) return;
+
+                // Delete with SweetAlert confirm
+                if (e.target.classList.contains('bi-trash')) {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            documents.splice(index, 1);
+                            localStorage.setItem('documentsList', JSON.stringify(documents));
+                            renderDocumentsTable();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Deleted!',
+                                text: 'Your document has been deleted.'
+                            });
+                        }
+                    });
+                }
+
+                // Edit
+                if (e.target.classList.contains('bi-pencil-square')) {
+                    const doc = documents[index];
+                    documentForm.type.value = doc.type;
+                    documentForm.expiry.value = doc.expiry;
+                    documentForm.identification.value = doc.identification;
+
+                    editIndex = index;
+                    addDocBtn.textContent = "UPDATE DOCUMENT DETAILS";
+                }
+            });
+
+            // Clear inputs
+            function clearDocumentInputs() {
+                documentForm.type.value = '';
+                documentForm.expiry.value = '';
+                documentForm.identification.value = '';
+                documentForm.file.value = '';
+            }
+
+            renderDocumentsTable();
+        });
+    </script>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const documentSelect = document.getElementById("document_type");
+            const expiryInput = document.getElementById("expiry_date");
+            const expiryAllowed = [
+                "Commercial Registration",
+                "GOSI Certificate",
+                "Zakat Certificate",
+                "Chamber of Commerce",
+                "Local Content Certificate",
+                "Masonry Certificate",
+                "Heating, Ventilating, And Air Conditioning (HVAC)"
+            ];
+
+            function toggleExpiry() {
+                const selectedValue = documentSelect.value.trim();
+
+                if (expiryAllowed.includes(selectedValue)) {
+                    expiryInput.disabled = false;
+                } else {
+                    expiryInput.value = "";
+                    expiryInput.disabled = true;
+                }
+            }
+            toggleExpiry();
+            documentSelect.addEventListener("change", toggleExpiry);
+        });
+    </script>
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const bankSelect = document.getElementById("bank");
+            const bankInput = document.getElementById("bank_name");
+
+            bankSelect.addEventListener("change", function() {
+                bankInput.value = this.value;
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="../../cdn.jsdelivr.net/npm/bootstrap-icons%401.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <script>
+        const regType = document.getElementById('registrationType');
+        const ksaFields = document.querySelectorAll('.for_ksa');
+        const otherFields = document.querySelectorAll('.for_other');
+        const for_withoutksa = document.querySelectorAll('.for_withoutksa');
+
+
+        function toggleRegistrationFields() {
+            if (regType.value === 'KSA') {
+                ksaFields.forEach(el => el.classList.remove('d-none'));
+                otherFields.forEach(el => el.classList.add('d-none'));
+                for_withoutksa.forEach(el => el.classList.remove('d-none'));
+            } else {
+                ksaFields.forEach(el => el.classList.add('d-none'));
+                otherFields.forEach(el => el.classList.remove('d-none'));
+                for_withoutksa.forEach(el => el.classList.add('d-none'));
+            }
+        }
+
+        regType.addEventListener('change', toggleRegistrationFields);
+        toggleRegistrationFields();
+
+
+        function setupUpload(inputId, labelId, fileId, fileNameId) {
+            const input = document.getElementById(inputId);
+            const label = document.getElementById(labelId);
+            const fileInput = document.getElementById(fileId);
+            const fileNameDisplay = document.getElementById(fileNameId);
+
+            input.addEventListener('input', () => {
+                label.classList.toggle('d-none', input.value.trim() === '');
+            });
+
+            fileInput.addEventListener('change', () => {
+                const fileName = fileInput.files.length ? fileInput.files[0].name : '';
+                fileNameDisplay.textContent = fileName ? `📎 ${fileName}` : '';
+            });
+        }
+
+        setupUpload('vatNumber', 'vatUploadLabel', 'vatFile', 'vatFileName');
+        setupUpload('crNumber', 'crUploadLabel', 'crFile', 'crFileName');
+        setupUpload('intlRegNumber', 'intlUploadLabel', 'intlFile', 'intlFileName');
+    </script>
+
+
+
+    <script>
+        const radioButtons = document.querySelectorAll('input[name="radios-inline-local-content"]');
+        const localContentSection = document.querySelector('.if-local-content-yes');
+        const fileInput = document.querySelector('.file-upload');
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'yes') {
+                    localContentSection.classList.remove('d-none');
+                } else {
+                    localContentSection.classList.add('d-none');
+                    fileInput.value = '';
+                }
+            });
+        });
+    </script>
+    
+    
+    
+            <script>
+            document.querySelector("form").addEventListener("submit", function () { 
+                const addressList = sessionStorage.getItem("addressList");
+                document.getElementById("addressListInput").value = addressList;
+
+                const contactList = sessionStorage.getItem("contactList"); 
+                document.getElementById("contactListInput").value = contactList;
+
+                const bankData = localStorage.getItem("bankData");
+                document.getElementById("bankDataInput").value = bankData;
+
+                const documentsList = localStorage.getItem("documentsList");
+                document.getElementById("documentsListInput").value = documentsList;
+            });
+            </script>
+
+
+</body>
+
+
+</html>

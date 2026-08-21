@@ -1,0 +1,123 @@
+.home-hero.owl-carousel {
+  display: block;
+  position: relative;
+}
+
+.home-hero .item {
+  display: none;
+  position: relative;
+}
+
+.home-hero .item.is-active {
+  display: block;
+}
+
+.home-hero .item.is-active .hexagon {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);
+}
+
+.home-hero .item.is-active .banner-content {
+  opacity: 1;
+}
+
+.home-hero-wrapper .owl-nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+
+.tab-wrapper .tab-content.open {
+  display: block;
+}
+
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+#google_translate_element,
+.skiptranslate {
+  display: none !important;
+}
+
+.language {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+#langMenu {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+#langMenu li {
+  display: inline-block;
+}
+
+.notranslate {
+  unicode-bidi: plaintext;
+}
+
+.career-form-wrapper .form-row {
+  display: flex;
+  justify-content: space-around !important;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 34px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  background-color: #f15b29;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #ef8b6aff;
+}
+
+input[type="file"] {
+  color: #fff;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 991px) {
+  #langMenu {
+    display: block !important;
+  }
+
+  .main-header ul {
+    top: auto;
+  }
+
+  html[dir="rtl"] .main-header .mob-nav {
+    right: auto;
+    left: 20px;
+  }
+}

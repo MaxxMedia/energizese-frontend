@@ -1,0 +1,246 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme inline {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --color-navy: #2c3248;
+  --color-navy-deep: #002e5e;
+  --color-orange: #f15b29;
+  --color-sky: #00aeef;
+  --color-sand: #f4f3ef;
+  --color-muted: #737373;
+  --color-copy: #8d98aa;
+  --color-body: #202124;
+  --color-slate: #454c60;
+  --color-dot: #828282;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #202124;
+  background: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon,
+.skiptranslate,
+#google_translate_element {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+iframe.skiptranslate {
+  display: none !important;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hex-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotateY(180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
+
+@keyframes content-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hex-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-hex-in {
+  animation: hex-in 0.7s ease-out both;
+}
+
+.animate-content-in {
+  animation: content-in 0.45s ease-out 0.35s both;
+}
+
+.animate-hex-float {
+  animation: hex-float 4s ease-in-out infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card figure img {
+  filter: grayscale(100%);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.service-card:hover figure img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+.service-card .front-details,
+.service-card .back-details {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 30px;
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.service-card .front-details {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, rgba(23, 23, 32, 0.94) 79%);
+  transform: translateY(10%);
+  opacity: 1;
+}
+
+.service-card .back-details {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, rgba(241, 91, 41, 0.94) 79%);
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.service-card:hover .back-details {
+  transform: translateY(10%);
+  opacity: 1;
+}
+
+.service-card:hover .front-details {
+  transform: translateY(80%);
+  opacity: 0;
+}
+
+.home-hero.owl-carousel {
+  display: block;
+  position: relative;
+}
+
+.home-hero .item {
+  display: none;
+  position: relative;
+}
+
+.home-hero .item.is-active {
+  display: block;
+}
+
+.home-hero .item.is-active .hexagon {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);
+}
+
+.home-hero .item.is-active .banner-content {
+  opacity: 1;
+}
+
+.home-hero .item > figure img {
+  width: 100%;
+  display: block;
+}
+
+.home-hero-wrapper .owl-nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+
+.tab-wrapper .tab-content.open {
+  display: block !important;
+}
+
+.main-header .overlay.open {
+  display: block;
+  z-index: 4;
+}
+
+.main-header ul.menu-open {
+  display: flex !important;
+}
+
+.main-header.solid {
+  position: relative;
+  background: #2c3248;
+  padding-bottom: 18px;
+}
+
+.main-header a.language {
+  cursor: pointer;
+}
+
+#langMenu {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+#langMenu li {
+  display: inline-block;
+  margin-right: 0 !important;
+}
+
+#langMenu li::after {
+  display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+  .main-header ul.menu-open {
+    display: flex !important;
+  }
+}
