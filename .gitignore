@@ -5,7 +5,6 @@ out
 *.log
 countries.json
 data
-maxxbusinessmedia
 .env
 .env.local
 
