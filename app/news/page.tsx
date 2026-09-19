@@ -50,12 +50,6 @@ export default function NewsPage() {
                   </Link>
                 </h2>
 
-                {article.excerpt && (
-                  <p className="mt-3 leading-7 text-muted">
-                    {article.excerpt}
-                  </p>
-                )}
-
                 <Link
                   href={`/news/${article.slug}`}
                   className="mt-4 inline-block font-medium text-orange hover:text-navy"
