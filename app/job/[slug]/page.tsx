@@ -52,12 +52,12 @@ export default async function JobPage({ params }: Props) {
           />
 
           <div className="mt-12">
-            <h2 className="mb-6 text-2xl font-semibold text-navy">
-              Apply for this Position
-            </h2>
+  <h2 className="mb-6 text-2xl font-semibold text-navy">
+    Apply for this Position
+  </h2>
 
-            <JobApplyForm jobTitle={job.title} />
-          </div>
+  <JobApplyForm selectedJob={job.title} />
+</div>
         </div>
       </section>
     </main>
