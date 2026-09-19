@@ -118,4 +118,6 @@ export const jobs = [
       <p><strong>Experience:</strong> 1–3 years in visitor promotion, telemarketing, events, or B2B marketing.</p>
     `,
   },
-] as const;
+] as const;export const getJob = (slug: string) => {
+  return jobs.find((job) => job.slug === slug);
+};
