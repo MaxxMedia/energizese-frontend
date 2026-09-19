@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    image: "https://energizese.com/uploads/e5e5ae6bfd244ab7.jpg",
+    image: "/public/uploads//uploads/e5e5ae6bfd244ab7.jpg",
     title: "Your Trusted Partner in Every Step",
   },
   {
-    image: "https://energizese.com/uploads/c628c83027401715.jpg",
+    image: "/public/uploads/c628c83027401715.jpg",
     title: "Specialized Mechanical Services Firm",
   },
 ];
