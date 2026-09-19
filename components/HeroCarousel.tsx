@@ -5,19 +5,19 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    image: "/public/uploads/e5e5ae6bfd244ab7.jpg",
+    image: "uploads/e5e5ae6bfd244ab7.jpg",
     title: "Your Trusted Partner in Every Step",
   },
   {
-    image: "/public/uploads/c628c83027401715.jpg",
+    image: "uploads/c628c83027401715.jpg",
     title: "Specialized Mechanical Services Firm",
   },
     {
-    image: "/public/uploads/uploads/e5e5ae6bfd244ab7.jpg",
+    image: "uploads/uploads/e5e5ae6bfd244ab7.jpg",
     title: "Your Trusted Partner in Every Step",
   },
   {
-    image: "/public/uploads/c628c83027401715.jpg",
+    image: "uploads/c628c83027401715.jpg",
     title: "Specialized Mechanical Services Firm",
   },
 ];
