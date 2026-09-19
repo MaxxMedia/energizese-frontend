@@ -16,7 +16,7 @@ export default function ServicesPage() {
             <span>Our Services</span>
             <p>
               We provide innovative and reliable mechanical solutions for
-              industrial, commercial, and residential projects, ensuring
+              industrial, commercial, and residential events, ensuring
               efficiency, safety, and seamless integration.
             </p>
           </div>

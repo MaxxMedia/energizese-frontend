@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
       { source: "/about-us.html", destination: "/about-us", permanent: true },
       { source: "/services.html", destination: "/services", permanent: true },
       { source: "/servicesd41d.html", destination: "/services", permanent: true },
-      { source: "/projects.html", destination: "/projects", permanent: true },
+      { source: "/events.html", destination: "/events", permanent: true },
       { source: "/career.html", destination: "/career", permanent: true },
       { source: "/news.html", destination: "/news", permanent: true },
       { source: "/faqs.html", destination: "/faqs", permanent: true },
@@ -34,16 +34,16 @@ const nextConfig: NextConfig = {
       },
       {
         source:
-          "/news/saudi-arabia-opens-theme-park-as-kingdom-pushes-ahead-with-mega-projects.html",
+          "/news/saudi-arabia-opens-theme-park-as-kingdom-pushes-ahead-with-mega-events.html",
         destination:
-          "/news/saudi-arabia-opens-theme-park-as-kingdom-pushes-ahead-with-mega-projects",
+          "/news/saudi-arabia-opens-theme-park-as-kingdom-pushes-ahead-with-mega-events",
         permanent: true,
       },
       {
         source:
-          "/news/saudi-arabia-opens--theme-park-as-kingdom-pushes-ahead-with-mega-projects.html",
+          "/news/saudi-arabia-opens--theme-park-as-kingdom-pushes-ahead-with-mega-events.html",
         destination:
-          "/news/saudi-arabia-opens-theme-park-as-kingdom-pushes-ahead-with-mega-projects-2",
+          "/news/saudi-arabia-opens-theme-park-as-kingdom-pushes-ahead-with-mega-events-2",
         permanent: true,
       },
     ];

@@ -34,55 +34,56 @@ export default function PillarsOfExcellence() {
             </figure>
           </div>
         </div>
-        <div className="pillars-excellence-right bottom-in">
-          <h2>
-            Our Pillars of <br /> Excellence
-          </h2>
-          <span>
-            Our values are the bedrock of our company and the reason our clients
-            trust us. They shape our approach to every project and inspire us to
-            exceed expectations with professionalism and accountability.
-          </span>
-          <Accordion
-            items={[
-              {
-                title: "Precision",
-                content: (
-                  <p>
-                    We execute every project with meticulous attention to detail
-                    and strict adherence to standards. Our disciplined approach
-                    ensures accuracy, consistency, and superior results.
-                  </p>
-                ),
-              },
-              {
-                title: "Innovation",
-                content: (
-                  <p>
-                    We embrace forward-thinking solutions and advanced
-                    technologies. By continuously evolving, we deliver smarter,
-                    more efficient outcomes for our clients.
-                  </p>
-                ),
-              },
-              {
-                title: "Quality",
-                content: (
-                  <p>
-                    Excellence is embedded in everything we do. From planning to
-                    delivery, we ensure durability, reliability, and outstanding
-                    performance.
-                  </p>
-                ),
-              },
-              {
-                title: "Integrity",
-                content: (
-                  <p>
-                    Trust is the foundation of our partnerships. We operate with
-                    transparency, accountability, and unwavering ethical
-                    principles.
-                  </p>
+       <div className="pillars-excellence-right bottom-in">
+  <h2>
+    Our Pillars of <br /> Excellence
+  </h2>
+
+  <span>
+    Our values guide everything we do and help us create meaningful platforms
+    that connect industries, inspire innovation, and drive business growth.
+  </span>
+
+  <Accordion
+    items={[
+      {
+        title: "Industry Connect",
+        content: (
+          <p>
+            We bring together businesses, industry leaders, professionals, and
+            decision-makers through focused platforms that create valuable
+            connections and opportunities.
+          </p>
+        ),
+      },
+      {
+        title: "Innovation",
+        content: (
+          <p>
+            We continuously embrace new ideas, technologies, and trends to
+            deliver relevant exhibitions, conferences, publications, and
+            digital platforms for evolving industries.
+          </p>
+        ),
+      },
+      {
+        title: "Quality",
+        content: (
+          <p>
+            We are committed to delivering professional, well-organized, and
+            high-value experiences for exhibitors, visitors, sponsors, and
+            industry partners.
+          </p>
+        ),
+      },
+      {
+        title: "Integrity",
+        content: (
+          <p>
+            We build lasting relationships through transparency, accountability,
+            professionalism, and a strong commitment to our partners and the
+            industries we serve.
+          </p>
                 ),
               },
             ]}

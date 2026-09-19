@@ -17,14 +17,13 @@ export default function HomePage() {
       <main>
         <section className="welcome-energizese">
           <div className="container bottom-in">
-            <span>Welcome to Energizese</span>
-            <p>
-              Energizese is a specialized mechanical services firm catering to
-              the industrial, commercial, and residential industry. With a focus
-              on efficiency, precision, and innovation, we provide high- quality
-              mechanical solutions that enhance the functionality and longevity
-              of interior spaces..
-            </p>
+            <span>Welcome to Maxx Business Media Pvt. Ltd.</span>
+           <p className="text-justify leading-relaxed">
+  Maxx Business Media Pvt. Ltd. is a leading B2B media and business events company focused on exhibitions,
+  conferences, trade publications, and digital platforms. We connect industries, businesses,
+  and professionals through high-value platforms that promote innovation, networking, knowledge sharing,
+  and business growth...
+</p>
             <Link className="btn-common" href="/about-us">
               Who we are
             </Link>
@@ -63,12 +62,12 @@ export default function HomePage() {
         <section className="partner-wrapper common-wrapper">
           <div className="container">
             <div className="partner-left bottom-in">
-              <h2>Expertise That Drives Excellence</h2>
-              <p>
-                With a team of experienced professionals, we bring precision,
-                technical expertise, and industry knowledge to every project we
-                undertake.
-              </p>
+              <h2>Expertise That Drives Business Growth</h2>
+<p>
+  With deep industry knowledge and an experienced team, we create impactful
+  exhibitions, conferences, media platforms, and digital solutions that
+  connect businesses and drive meaningful growth.
+</p>
               <Link className="btn-common" href="/contact-us">
                 More Details
               </Link>

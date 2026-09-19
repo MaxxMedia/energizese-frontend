@@ -6,16 +6,16 @@ export default function HomeContact() {
       <div className="container">
         <div className="home-contact-wrap">
           <div className="home-contact-title">
-            <h2>
-              Let us Innovate <br /> Together !
-            </h2>
-          </div>
-          <div className="home-contact-para">
-            <p>
-              We are here to assist you with cutting-edge mechanical solutions
-              for your projects. We&apos;re just a call or message away.
-              Let&apos;s create efficient, future-ready spaces together.
-            </p>
+      <h2>
+  Let&apos;s Connect <br /> & Grow Together!
+</h2>
+</div>
+
+<div className="home-contact-para">
+  <p>
+    Connect with Maxx Business Media to explore new markets, build valuable
+    business relationships, and create opportunities for sustainable growth.
+  </p>
           </div>
           <div className="home-contact-link">
             <Link href="/contact-us">

@@ -4,70 +4,147 @@ import InnerHero from "@/components/InnerHero";
 import { Container } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Faq | Energizese",
+  title: "FAQs | Maxx Business Media",
 };
 
 export default function FaqsPage() {
   return (
     <main>
-      <InnerHero src="/assets/images/faq-banner.jpg" alt="FAQ" />
+      <InnerHero
+        src="/assets/images/faq-banner.jpg"
+        alt="Frequently Asked Questions - Maxx Business Media"
+      />
+
       <section className="bg-white py-16 md:py-24">
         <Container className="max-w-4xl">
-          <h1 className="mb-8 text-center text-3xl font-semibold text-navy md:text-5xl">
-            FAQ&apos;s
+          <h1 className="mb-4 text-center text-3xl font-semibold text-navy md:text-5xl">
+            Frequently Asked Questions
           </h1>
+
+          <p className="mx-auto mb-10 max-w-2xl text-center text-lg leading-8 text-muted">
+            Find answers to common questions about our exhibitions,
+            conferences, media platforms, partnerships, and business
+            opportunities.
+          </p>
+
           <Accordion
             items={[
               {
-                title: "Quality",
+                title: "What does Maxx Business Media do?",
                 content: (
                   <p>
-                    We strive to provide excellent quality products and services
-                    to our customers. Our stringent quality check practices help
-                    us provide the best standards of goods and services.
+                    Maxx Business Media Pvt. Ltd. is a B2B media and business
+                    events company focused on exhibitions, conferences, trade
+                    publications, digital business platforms, and industry
+                    networking initiatives.
                   </p>
                 ),
               },
+
               {
-                title: "Commitment",
-                content: (
-                  <>
-                    <p>We are committed to:</p>
-                    <ul className="mt-3 list-disc space-y-1 pl-5">
-                      <li>
-                        Growing our business to higher level with ultimate aim
-                        of safeguarding our planet for future generations.
-                      </li>
-                      <li>
-                        Winning through creativity, research, commitment and
-                        innovation.
-                      </li>
-                      <li>
-                        Providing unmatched customer service throughout the
-                        relationship.
-                      </li>
-                    </ul>
-                  </>
-                ),
-              },
-              {
-                title: "Quality ",
+                title: "What types of exhibitions do you organise?",
                 content: (
                   <p>
-                    We strive to provide excellent quality products and services
-                    to our customers. Our stringent quality check practices help
-                    us provide the best standards of goods and services.
+                    We organise industry-focused B2B exhibitions covering
+                    sectors such as manufacturing, engineering, tooling,
+                    metrology, automotive, plastics, and other specialised
+                    industrial segments.
                   </p>
                 ),
               },
+
               {
-                title: "Nurture",
+                title: "How can my company participate in an exhibition?",
                 content: (
                   <p>
-                    We nurture the talent of our people as well as our
-                    stakeholders to achieve greater heights in the industry at
-                    the same time focusing sustainable development, our efforts
-                    help us uplift the local economy, talent and culture.
+                    Companies can participate as exhibitors, sponsors,
+                    supporting partners, or technology partners. Contact our
+                    team to receive the relevant event information, participation
+                    options, and commercial details.
+                  </p>
+                ),
+              },
+
+              {
+                title: "Can companies become sponsors or partners?",
+                content: (
+                  <p>
+                    Yes. We offer sponsorship and partnership opportunities for
+                    companies, industry associations, institutions, and
+                    technology providers looking to increase their visibility
+                    and connect with relevant business audiences.
+                  </p>
+                ),
+              },
+
+              {
+                title: "How can I attend your exhibitions and conferences?",
+                content: (
+                  <p>
+                    Visitors and delegates can register through the respective
+                    event websites or registration platforms. Registration
+                    details are announced for each exhibition and conference.
+                  </p>
+                ),
+              },
+
+              {
+                title: "Does Maxx Business Media provide media and advertising opportunities?",
+                content: (
+                  <p>
+                    Yes. We provide industry-focused media and promotional
+                    opportunities through trade publications, websites, digital
+                    platforms, social media, email campaigns, and event
+                    promotions.
+                  </p>
+                ),
+              },
+
+              {
+                title: "Can you help companies with industry promotion?",
+                content: (
+                  <p>
+                    Yes. We provide targeted B2B marketing and promotional
+                    solutions designed to help companies improve industry
+                    visibility, reach relevant decision-makers, generate
+                    business leads, and build stronger market connections.
+                  </p>
+                ),
+              },
+
+              {
+                title: "How can I partner with Maxx Business Media?",
+                content: (
+                  <p>
+                    We welcome partnerships with manufacturers, technology
+                    companies, industry associations, institutions, media
+                    organisations, and other business stakeholders. Contact us
+                    to discuss collaboration opportunities.
+                  </p>
+                ),
+              },
+
+              {
+                title: "How can I contact Maxx Business Media?",
+                content: (
+                  <p>
+                    You can contact our team at{" "}
+                    <a
+                      href="mailto:info@maxxmedia.in"
+                      className="font-medium text-orange hover:text-navy"
+                    >
+                      info@maxxmedia.in
+                    </a>{" "}
+                    or call us at{" "}
+                    <a
+                      href="tel:+919148319993"
+                      className="font-medium text-orange hover:text-navy"
+                    >
+                      +91 91483 19993
+                    </a>
+                    . Our team will be happy to assist you with exhibitions,
+                    conferences, media, partnerships, and other business
+                    enquiries.
                   </p>
                 ),
               },

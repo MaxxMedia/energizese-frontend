@@ -76,7 +76,7 @@ export default function ProjectTabs() {
             )}
             onClick={() => setTab("ongoing")}
           >
-            Ongoing Projects
+            Ongoing events
           </button>
           <button
             type="button"
@@ -86,7 +86,7 @@ export default function ProjectTabs() {
             )}
             onClick={() => setTab("completed")}
           >
-            Completed Projects
+            Completed events
           </button>
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
