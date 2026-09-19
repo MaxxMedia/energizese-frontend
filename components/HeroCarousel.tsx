@@ -13,7 +13,7 @@ const slides = [
     title: "Specialized Mechanical Services Firm",
   },
     {
-    image: "uploads/uploads/e5e5ae6bfd244ab7.jpg",
+    image: "uploads/e5e5ae6bfd244ab7.jpg",
     title: "Your Trusted Partner in Every Step",
   },
   {
