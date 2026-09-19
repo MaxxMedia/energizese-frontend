@@ -37,7 +37,7 @@ export function Button({
     "group inline-flex items-center justify-center rounded-full border px-8 py-3.5 pr-20 text-[15px] font-semibold uppercase tracking-wide transition",
     light
       ? "border-white text-white hover:bg-white hover:text-[#2c3248]"
-      : "border-[#f15b29] text-[#f15b29] hover:border-[#2c3248] hover:text-[#2c3248]",
+      : "border-[#EA032B] text-[#EA032B] hover:border-[#2c3248] hover:text-[#2c3248]",
     disabled && "pointer-events-none opacity-60",
     className
   );
